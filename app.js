@@ -26,7 +26,7 @@ const guardarLibros = (libros) => {
 app.get("/api/books",(req, res)=>{
     const libros = leerLibros();
     res.status(200).json({status:200, message:"Success", data: libros});
-});
+    });
 
 // GET para buscar un libro por su id
 app.get("/api/books/:id",(req, res)=>{
@@ -37,7 +37,7 @@ app.get("/api/books/:id",(req, res)=>{
 
     libros.forEach(libro => {
         if(libro.id === id){
-            libroEncontrado = libro;
+                libroEncontrado = libro;
         }
     });
 
@@ -115,11 +115,18 @@ app.put("/api/books/:id",(req, res)=>{
 
 
 
-
-
-
-
-
+app.delete("/api/books/:id", (req,res)=>{
+    const id = parseInt(req.params.id);
+    const libros = leerLibros();
+    const filtroLibros = libros.filter(libro => libro.id !== id);
+    
+    if (filtroLibros.length !== libros.length) {
+        guardarLibros(filtroLibros);
+        return res.status(200).json({status:200, message:"Registro eliminado"});
+        } else {
+            return res.status(404).json({status:404, message:"Libro no encontrado"});
+        }
+    });
 
 app.listen(PORT, ()=>{
     console.log(`El servidor de express esta escuchando en http://localhost:${PORT}`);
