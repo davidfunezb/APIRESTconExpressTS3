@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "genero": "Realismo mágico",
+    "anioPublicacion": 1967
+  },
+  {
+    "id": 2,
+    "titulo": "El Principito",
+    "autor": "Antoine de Saint-Exupéry",
+    "genero": "Fábula",
+    "anioPublicacion": 1943
+  },
+  {
+    "id": 3,
+    "titulo": "Prisión Verde",
+    "autor": "Ramón Amaya Amador",
+    "genero": "Novela social",
+    "anioPublicacion": 1950
+  },
+  {
+    "titulo": "Juego de Tronos",
+    "autor": "George R. R. Martin",
+    "genero": "Fantasía",
+    "anioPublicacion": 1996,
+    "id": 5
+  }
+]
