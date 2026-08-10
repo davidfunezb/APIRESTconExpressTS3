@@ -65,6 +65,31 @@ app.post("/api/books", (req,res)=>{
     res.status(200).json({status:200, message:"Registro agregado", data: libro});
 });
 
+// PUT para actualizar un libro 
+app.put("/api/books/:id",(req, res)=>{
+    const id = parseInt(req.params.id);
+    const libro = req.body;
+    const libros = leerLibros();
+
+    let isActive = false;
+
+    libros.forEach(clibro => {
+        if(clibro.id === id){
+            isActive = true;
+            clibro.titulo = libro.titulo || clibro.titulo;
+            clibro.autor = libro.autor || clibro.autor;
+            clibro.genero = libro.genero || clibro.genero;
+            clibro.anioPublicacion = libro.anioPublicacion || clibro.anioPublicacion;
+        }
+    });
+
+    if(isActive){
+        guardarLibros(libros);
+        return res.status(200).json({status:200, message:"Registro actualizado", data: libros});
+    }else{
+        return res.status(404).json({status:404, message:"Libro no encontrado"});
+    }
+});
 
 
 
